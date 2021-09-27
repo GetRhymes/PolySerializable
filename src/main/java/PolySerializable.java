@@ -4,7 +4,7 @@ public class PolySerializable implements Serializable {
 
     public PolySerializable() {}
 
-    public ByteArrayOutputStream serializableMessage(MessageDTO message) throws IOException {
+    public static ByteArrayOutputStream serializeMessage(MessageDTO message) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         oos.writeObject(message);
@@ -15,9 +15,11 @@ public class PolySerializable implements Serializable {
         return baos;
     }
 
-    public MessageDTO deserializableMessage(ByteArrayOutputStream serializableMessage) throws IOException, ClassNotFoundException {
+    public static MessageDTO deserializeToMessage(ByteArrayOutputStream serializableMessage)
+            throws IOException, ClassNotFoundException {
         ByteArrayInputStream bais = new ByteArrayInputStream(serializableMessage.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bais);
+        // todo catch classCastException
         return (MessageDTO) ois.readObject();
     }
 }
