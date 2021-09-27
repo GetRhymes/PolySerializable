@@ -11,8 +11,6 @@ public class PolySerializableTest {
         MessageDTO message = new MessageDTO("2021-09-23", "Nikita", "Hello, World!", null, null);
         MessageDTO deserializableMessage =
                 PolySerializable.deserializeToMessage(PolySerializable.serializeMessage(message));
-        System.out.println(message);
-        System.out.println(deserializableMessage);
         assertEquals(message, deserializableMessage);
     }
 }
