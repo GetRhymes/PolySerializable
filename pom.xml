@@ -6,7 +6,7 @@
 
     <groupId>com.poly.serialize</groupId>
     <artifactId>PolySerialize</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
 
     <dependencies>
 
@@ -62,7 +62,7 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/mvn-repo</branch>
                     <includes><include>**/*</include></includes>
-                    <repositoryName>com.poly.serialize.PolySerializable</repositoryName>
+                    <repositoryName>PolySerializable</repositoryName>
                     <repositoryOwner>GetRhymes</repositoryOwner>
                 </configuration>
                 <executions>

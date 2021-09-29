@@ -66,7 +66,7 @@ public class MessageDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "com.poly.serialize.MessageDTO{" +
+        return "MessageDTO{" +
                 "date='" + date + '\'' +
                 ", name='" + name + '\'' +
                 ", message='" + message + '\'' +
