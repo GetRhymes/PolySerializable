@@ -41,6 +41,10 @@ public class Message implements Serializable {
         return fileName;
     }
 
+    public Long getFileSize() {
+        return fileSize;
+    }
+
     public void setDate(String date) {
         this.date = date;
     }
@@ -55,6 +59,10 @@ public class Message implements Serializable {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
     }
 
     @Override
@@ -105,13 +113,5 @@ public class Message implements Serializable {
                 ? null : messagePartsWithoutGarbage.get(3));
         setFileSize(messagePartsWithoutGarbage.get(4).trim().equals("null")
                 ? null : Long.valueOf(messagePartsWithoutGarbage.get(4)));
-    }
-
-    public Long getFileSize() {
-        return fileSize;
-    }
-
-    public void setFileSize(Long fileSize) {
-        this.fileSize = fileSize;
     }
 }
