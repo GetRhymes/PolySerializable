@@ -11,6 +11,6 @@ public class PolySerializableTest {
         Message message = new Message("2021-09-23", "Nikita", "Hello, World!", null, null);
         Message messageAfterParse = new Message();
         messageAfterParse.parseToMessage(message.toTransferString());
-        Assertions.assertTrue(message.equals(messageAfterParse));
+        Assertions.assertEquals(message, messageAfterParse);
     }
 }
