@@ -1,3 +1,5 @@
+import com.poly.serialize.MessageDTO;
+import com.poly.serialize.PolySerializable;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

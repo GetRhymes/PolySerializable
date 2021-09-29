@@ -1,8 +1,11 @@
+package com.poly.serialize;
+
 import java.io.*;
 
 public class PolySerializable implements Serializable {
 
-    public PolySerializable() {}
+    public PolySerializable() {
+    }
 
     public static byte[] serializeMessage(MessageDTO message) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

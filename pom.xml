@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.poly.serializable</groupId>
-    <artifactId>PolySerializable</artifactId>
-    <version>1.3</version>
+    <groupId>com.poly.serialize</groupId>
+    <artifactId>PolySerialize</artifactId>
+    <version>1.5</version>
 
     <dependencies>
 
@@ -62,7 +62,7 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/mvn-repo</branch>
                     <includes><include>**/*</include></includes>
-                    <repositoryName>PolySerializable</repositoryName>
+                    <repositoryName>com.poly.serialize.PolySerializable</repositoryName>
                     <repositoryOwner>GetRhymes</repositoryOwner>
                 </configuration>
                 <executions>

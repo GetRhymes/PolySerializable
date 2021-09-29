@@ -1,3 +1,5 @@
+package com.poly.serialize;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -64,7 +66,7 @@ public class MessageDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "MessageDTO{" +
+        return "com.poly.serialize.MessageDTO{" +
                 "date='" + date + '\'' +
                 ", name='" + name + '\'' +
                 ", message='" + message + '\'' +
