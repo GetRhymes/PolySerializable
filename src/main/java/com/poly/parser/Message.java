@@ -12,9 +12,9 @@ public class Message implements Serializable {
     private String name;
     private String text;
     private String fileName;
-    private Long fileSize;
+    private Integer fileSize;
 
-    public Message(String date, String name, String text, String fileName, Long fileSize) {
+    public Message(String date, String name, String text, String fileName, Integer fileSize) {
         this.date = date;
         this.name = name;
         this.text = text;
@@ -41,7 +41,7 @@ public class Message implements Serializable {
         return fileName;
     }
 
-    public Long getFileSize() {
+    public Integer getFileSize() {
         return fileSize;
     }
 
@@ -61,7 +61,7 @@ public class Message implements Serializable {
         this.fileName = fileName;
     }
 
-    public void setFileSize(Long fileSize) {
+    public void setFileSize(Integer fileSize) {
         this.fileSize = fileSize;
     }
 
@@ -110,8 +110,8 @@ public class Message implements Serializable {
         setName(messagePartsWithoutGarbage.get(1).trim());
         setMessage(messagePartsWithoutGarbage.get(2).replaceAll("\\\\,", ",").trim());
         setFileName(messagePartsWithoutGarbage.get(3).trim().equals("null")
-                ? null : messagePartsWithoutGarbage.get(3));
+                ? null : messagePartsWithoutGarbage.get(3).trim());
         setFileSize(messagePartsWithoutGarbage.get(4).trim().equals("null")
-                ? null : Long.valueOf(messagePartsWithoutGarbage.get(4)));
+                ? null : Integer.valueOf(messagePartsWithoutGarbage.get(4).trim()));
     }
 }
