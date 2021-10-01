@@ -93,11 +93,13 @@ public class Message implements Serializable {
     }
 
     public String toTransferString() {
-        return ("date: " + date + " , " +
+        return  "date: " + date + " , " +
                 "name: " + name + " , " +
-                "message: " + text.replace(",", "\\,") + " , " +
+                "message: " + text
+                                .replaceAll(",", "\\,")
+                                .replaceAll(":", "\\:") + " , " +
                 "fileName: " + fileName + " , " +
-                "fileSize: " + fileSize).replace(":", "\\:");
+                "fileSize: " + fileSize;
     }
 
     public void parseToMessage(String message) {

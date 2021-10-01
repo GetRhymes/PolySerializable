@@ -15,13 +15,10 @@ public class MessageReader {
         this.inputStream = inputStream;
     }
 
-    private byte[] readFile(int size, boolean server) throws IOException {
+    private byte[] readFile(int size) throws IOException {
         byte[] file = new byte[size];
         for (int i = 0; i < size; i++) {
             file[i] = (byte) inputStream.read();
-        }
-        if(server) {
-            inputStream.skip(1L);
         }
         return file;
     }
@@ -49,12 +46,12 @@ public class MessageReader {
         inputStream.close();
     }
 
-    public MessageWithContent read(boolean server) throws IOException {
+    public MessageWithContent read() throws IOException {
         Message message = readMessage();
         byte[] content = null;
         if(message.getFileSize() != null && message.getFileSize() > 0
                 && message.getFileName() != null && !message.getFileName().isEmpty()) {
-            content = readFile(message.getFileSize(), server);
+            content = readFile(message.getFileSize());
         }
         return new MessageWithContent(message, content);
     }
