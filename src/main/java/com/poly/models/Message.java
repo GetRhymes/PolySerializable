@@ -1,4 +1,4 @@
-package com.poly.parser;
+package com.poly.models;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -93,11 +93,11 @@ public class Message implements Serializable {
     }
 
     public String toTransferString() {
-        return "date: " + date + " , " +
+        return ("date: " + date + " , " +
                 "name: " + name + " , " +
                 "message: " + text.replace(",", "\\,") + " , " +
                 "fileName: " + fileName + " , " +
-                "fileSize: " + fileSize;
+                "fileSize: " + fileSize).replace(":", "\\:");
     }
 
     public void parseToMessage(String message) {
@@ -108,7 +108,10 @@ public class Message implements Serializable {
 
         setDate(messagePartsWithoutGarbage.get(0).trim());
         setName(messagePartsWithoutGarbage.get(1).trim());
-        setMessage(messagePartsWithoutGarbage.get(2).replaceAll("\\\\,", ",").trim());
+        setMessage(messagePartsWithoutGarbage.get(2)
+                .replaceAll("\\\\,", ",")
+                .replaceAll("\\\\:", ":")
+                .trim());
         setFileName(messagePartsWithoutGarbage.get(3).trim().equals("null")
                 ? null : messagePartsWithoutGarbage.get(3).trim());
         setFileSize(messagePartsWithoutGarbage.get(4).trim().equals("null")

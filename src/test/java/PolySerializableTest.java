@@ -1,4 +1,4 @@
-import com.poly.parser.Message;
+import com.poly.models.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
