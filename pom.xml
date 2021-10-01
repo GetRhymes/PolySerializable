@@ -62,7 +62,7 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <branch>refs/heads/mvn-repo</branch>
                     <includes><include>**/*</include></includes>
-                    <repositoryName>PolySerializable</repositoryName>
+                    <repositoryName>PolySerialize</repositoryName>
                     <repositoryOwner>GetRhymes</repositoryOwner>
                 </configuration>
                 <executions>
