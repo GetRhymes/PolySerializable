@@ -1,1 +1,1 @@
-# com.poly.parser.PolySerializable
+# com.poly.models.PolySerializable
