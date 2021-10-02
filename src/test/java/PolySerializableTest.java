@@ -8,7 +8,8 @@ public class PolySerializableTest {
 
     @Test
     public void serializableTest() throws IOException, ClassNotFoundException {
-        Message message = new Message("2021-09-23", "Nikita", "Hello, World!", null, null);
+        Message message = new Message(
+                "2021-09-23", "Nikita", "Hello,,,,, ::: :: // /: World!", null, null);
         Message messageAfterParse = new Message();
         messageAfterParse.parseToMessage(message.toTransferString());
         Assertions.assertEquals(message, messageAfterParse);

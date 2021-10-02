@@ -93,20 +93,20 @@ public class Message implements Serializable {
     }
 
     public String toTransferString() {
-        return  "date: " + date + " , " +
-                "name: " + name + " , " +
-                "message: " + text
-                                .replaceAll(",", "\\,")
-                                .replaceAll(":", "\\:") + " , " +
-                "fileName: " + fileName + " , " +
-                "fileSize: " + fileSize;
+        return "date : " + date + " , " +
+                "name : " + name + " , " +
+                "message : " + text
+                .replace(",", "\\,")
+                .replace(":", "\\:") + " , " +
+                "fileName : " + fileName + " , " +
+                "fileSize : " + fileSize;
     }
 
     public void parseToMessage(String message) {
         String[] messageParts = message
                 .split(" ,");
         List<String> messagePartsWithoutGarbage = Arrays.stream(messageParts)
-                .map(it -> it.split(":")[1]).collect(Collectors.toList());
+                .map(it -> it.split(" : ")[1]).collect(Collectors.toList());
 
         setDate(messagePartsWithoutGarbage.get(0).trim());
         setName(messagePartsWithoutGarbage.get(1).trim());
