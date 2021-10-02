@@ -33,7 +33,7 @@ public class Message implements Serializable {
         return name;
     }
 
-    public String getMessage() {
+    public String getText() {
         return text;
     }
 
@@ -53,7 +53,7 @@ public class Message implements Serializable {
         this.name = name;
     }
 
-    public void setMessage(String message) {
+    public void setText(String message) {
         this.text = message;
     }
 
@@ -95,7 +95,7 @@ public class Message implements Serializable {
     public String toTransferString() {
         return "date : " + date + " , " +
                 "name : " + name + " , " +
-                "message : " + text
+                "text : " + text
                 .replace(",", "\\,")
                 .replace(":", "\\:") + " , " +
                 "fileName : " + fileName + " , " +
@@ -110,7 +110,7 @@ public class Message implements Serializable {
 
         setDate(messagePartsWithoutGarbage.get(0).trim());
         setName(messagePartsWithoutGarbage.get(1).trim());
-        setMessage(messagePartsWithoutGarbage.get(2)
+        setText(messagePartsWithoutGarbage.get(2)
                 .replaceAll("\\\\,", ",")
                 .replaceAll("\\\\:", ":")
                 .trim());
