@@ -1,6 +1,7 @@
 package com.poly.models;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -93,13 +94,13 @@ public class Message implements Serializable {
     }
 
     public String toTransferString() {
-        return "date : " + date + " , " +
+        return new String(("date : " + date + " , " +
                 "name : " + name + " , " +
                 "text : " + text
                 .replace(",", "\\,")
                 .replace(":", "\\:") + " , " +
                 "fileName : " + fileName + " , " +
-                "fileSize : " + fileSize;
+                "fileSize : " + fileSize).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
 
     public void parseToMessage(String message) {
