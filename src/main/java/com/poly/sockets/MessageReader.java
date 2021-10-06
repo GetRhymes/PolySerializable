@@ -5,6 +5,7 @@ import com.poly.models.MessageWithContent;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class MessageReader {
 
@@ -34,7 +35,7 @@ public class MessageReader {
         for (int i = 0; i < size; i++) {
             msg[i] = (byte) inputStream.read();
         }
-        message.parseToMessage(new String(msg));
+        message.parseToMessage(new String(msg, StandardCharsets.UTF_8));
         return message;
     }
 
