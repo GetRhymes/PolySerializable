@@ -19,10 +19,10 @@ public class MessageWriter {
         String strMessage = message.toTransferString();
         System.out.println("TRANS SIZE " + strMessage.length());
         try {
-            outputStream.write(strMessage.length() << 24);
-            outputStream.write(strMessage.length() << 16);
-            outputStream.write(strMessage.length() << 8);
-            outputStream.write(strMessage.length());
+            outputStream.write(strMessage.getBytes().length << 24);
+            outputStream.write(strMessage.getBytes().length << 16);
+            outputStream.write(strMessage.getBytes().length << 8);
+            outputStream.write(strMessage.getBytes().length);
             outputStream.write(strMessage.getBytes());
             printBA(strMessage.getBytes());
             System.out.println(strMessage);
