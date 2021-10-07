@@ -3,15 +3,17 @@ package com.poly.sockets;
 import com.poly.models.Message;
 import com.poly.models.MessageWithContent;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class MessageWriter {
 
-    private final OutputStream outputStream;
+    private DataOutputStream outputStream;
+
 
     public MessageWriter(OutputStream outputStream) {
-        this.outputStream = outputStream;
+        this.outputStream = new DataOutputStream(outputStream);
     }
 
     private void writeMessage(Message message) {
@@ -43,5 +45,7 @@ public class MessageWriter {
             && message.getFileName() != null && !message.getFileName().isEmpty()) {
             writeFile(messageWithContent.getContent());
         }
+
     }
+
 }

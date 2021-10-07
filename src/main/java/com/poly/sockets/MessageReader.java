@@ -2,17 +2,19 @@ package com.poly.sockets;
 
 import com.poly.models.Message;
 import com.poly.models.MessageWithContent;
+import org.apache.commons.codec.binary.StringUtils;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 public class MessageReader {
 
-    private final InputStream inputStream;
+
+    private DataInputStream inputStream;
 
     public MessageReader(InputStream inputStream) {
-        this.inputStream = inputStream;
+        this.inputStream = new DataInputStream(inputStream);
     }
 
     private byte[] readFile(int size) throws IOException {
@@ -34,7 +36,7 @@ public class MessageReader {
         for (int i = 0; i < size; i++) {
             msg[i] = (byte) inputStream.read();
         }
-        message.parseToMessage(new String(msg, StandardCharsets.UTF_8));
+        message.parseToMessage(StringUtils.newStringUtf8(msg));
         return message;
     }
 
