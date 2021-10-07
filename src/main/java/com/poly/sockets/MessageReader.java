@@ -9,8 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 public class MessageReader {
 
-
-    private InputStream inputStream;
+    private final InputStream inputStream;
 
     public MessageReader(InputStream inputStream) {
         this.inputStream = inputStream;
