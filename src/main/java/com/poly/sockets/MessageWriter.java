@@ -25,6 +25,9 @@ public class MessageWriter {
             outputStream.write(strMessage.length());
             outputStream.write(strMessage.getBytes());
             printBA(strMessage.getBytes());
+            System.out.println(strMessage);
+            System.out.println(strMessage.getBytes().length);
+            System.out.println(strMessage.length());
         } catch (IOException e) {
             e.printStackTrace();
         }
