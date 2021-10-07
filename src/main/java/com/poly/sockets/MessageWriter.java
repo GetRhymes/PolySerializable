@@ -17,6 +17,7 @@ public class MessageWriter {
 
     private void writeMessage(Message message) {
         String strMessage = message.toTransferString();
+        System.out.println("TRANS SIZE " + strMessage.length());
         try {
             outputStream.write(strMessage.length() << 24);
             outputStream.write(strMessage.length() << 16);

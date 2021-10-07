@@ -30,6 +30,7 @@ public class MessageReader {
             size = size << 8;
             size += inputStream.read();
         }
+        System.out.println("SIZE " + size);
         Message message = new Message();
         byte[] msg = new byte[size];
         for (int i = 0; i < size; i++) {
