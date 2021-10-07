@@ -17,21 +17,12 @@ public class MessageWriter {
 
     private void writeMessage(Message message) {
         String strMessage = message.toTransferString();
-        System.out.println("TRANS SIZE " + strMessage.getBytes().length);
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(2, 24)));
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(2, 16)));
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(2, 8)));
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length % (int) Math.pow(2, 8)));
         try {
             outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 24));
             outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 16));
             outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 8));
             outputStream.write(strMessage.getBytes().length % (int) Math.pow(2, 8));
             outputStream.write(strMessage.getBytes());
-            printBA(strMessage.getBytes());
-            System.out.println(strMessage);
-            System.out.println(strMessage.getBytes().length);
-            System.out.println(strMessage.length());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,13 +43,6 @@ public class MessageWriter {
         if(message.getFileSize() != null && message.getFileSize() > 0
             && message.getFileName() != null && !message.getFileName().isEmpty()) {
             writeFile(messageWithContent.getContent());
-        }
-    }
-
-    public static void printBA(byte[] bytes) {
-        for (int i = 0; i < bytes.length; i++) {
-            System.out.print(bytes[i] + ",");
-            System.out.println();
         }
     }
 }
