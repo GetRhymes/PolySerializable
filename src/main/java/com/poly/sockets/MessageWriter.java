@@ -18,15 +18,15 @@ public class MessageWriter {
     private void writeMessage(Message message) {
         String strMessage = message.toTransferString();
         System.out.println("TRANS SIZE " + strMessage.getBytes().length);
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(24, 2)));
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(16, 2)));
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(8, 2)));
-        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length % (int) Math.pow(8, 2)));
+        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(2, 24)));
+        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(2, 16)));
+        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length / (int) Math.pow(2, 8)));
+        System.out.println("PART SIZE: " + (byte) (strMessage.getBytes().length % (int) Math.pow(2, 8)));
         try {
-            outputStream.write(strMessage.getBytes().length / (int) Math.pow(24, 2));
-            outputStream.write(strMessage.getBytes().length / (int) Math.pow(16, 2));
-            outputStream.write(strMessage.getBytes().length / (int) Math.pow(8, 2));
-            outputStream.write(strMessage.getBytes().length % (int) Math.pow(8, 2));
+            outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 24));
+            outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 16));
+            outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 8));
+            outputStream.write(strMessage.getBytes().length % (int) Math.pow(2, 8));
             outputStream.write(strMessage.getBytes());
             printBA(strMessage.getBytes());
             System.out.println(strMessage);
