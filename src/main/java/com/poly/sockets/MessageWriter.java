@@ -9,8 +9,7 @@ import java.io.OutputStream;
 
 public class MessageWriter {
 
-    private DataOutputStream outputStream;
-
+    private final DataOutputStream outputStream;
 
     public MessageWriter(OutputStream outputStream) {
         this.outputStream = new DataOutputStream(outputStream);
@@ -45,7 +44,5 @@ public class MessageWriter {
             && message.getFileName() != null && !message.getFileName().isEmpty()) {
             writeFile(messageWithContent.getContent());
         }
-
     }
-
 }

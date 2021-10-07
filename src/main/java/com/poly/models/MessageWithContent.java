@@ -2,8 +2,8 @@ package com.poly.models;
 
 public class MessageWithContent {
 
-    private Message message;
-    private byte[] content;
+    private final Message message;
+    private final byte[] content;
 
     public MessageWithContent(Message message, byte[] content) {
         this.message = message;

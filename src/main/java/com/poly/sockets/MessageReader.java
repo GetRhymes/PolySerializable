@@ -10,8 +10,7 @@ import java.io.InputStream;
 
 public class MessageReader {
 
-
-    private DataInputStream inputStream;
+    private final DataInputStream inputStream;
 
     public MessageReader(InputStream inputStream) {
         this.inputStream = new DataInputStream(inputStream);
@@ -57,5 +56,4 @@ public class MessageReader {
         }
         return new MessageWithContent(message, content);
     }
-
 }
