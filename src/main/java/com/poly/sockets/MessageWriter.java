@@ -23,6 +23,7 @@ public class MessageWriter {
             outputStream.write(strMessage.length() << 8);
             outputStream.write(strMessage.length());
             outputStream.write(strMessage.getBytes());
+            printBA(strMessage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,6 +44,13 @@ public class MessageWriter {
         if(message.getFileSize() != null && message.getFileSize() > 0
             && message.getFileName() != null && !message.getFileName().isEmpty()) {
             writeFile(messageWithContent.getContent());
+        }
+    }
+
+    public static void printBA(byte[] bytes) {
+        for (int i = 0; i < bytes.length; i++) {
+            System.out.print(bytes[i] + ",");
+            System.out.println();
         }
     }
 }

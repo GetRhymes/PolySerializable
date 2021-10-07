@@ -35,6 +35,7 @@ public class MessageReader {
         for (int i = 0; i < size; i++) {
             msg[i] = (byte) inputStream.read();
         }
+        MessageWriter.printBA(msg);
         message.parseToMessage(StringUtils.newStringUtf8(msg));
         return message;
     }
