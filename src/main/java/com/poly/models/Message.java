@@ -105,10 +105,13 @@ public class Message {
         String[] messageParts = message
                 .split(" , ");
         List<String> messagePartsWithoutGarbage = Arrays.stream(messageParts)
-                .map(it -> it.split(" : ")[1]).collect(Collectors.toList());
+                .map(it -> {
+                    String[] partsOfMessageField = it.split(" : ");
+                    return (partsOfMessageField.length > 1) ? partsOfMessageField[1] : "";
+                }).collect(Collectors.toList());
 
-        setDate(messagePartsWithoutGarbage.get(0));
-        setName(messagePartsWithoutGarbage.get(1));
+        setDate(messagePartsWithoutGarbage.get(0).trim());
+        setName(messagePartsWithoutGarbage.get(1).trim());
         setText(messagePartsWithoutGarbage.get(2)
                 .replaceAll("\\\\,", ",")
                 .replaceAll("\\\\:", ":")
