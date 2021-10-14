@@ -2,6 +2,8 @@ package com.poly.sockets;
 
 import com.poly.models.Message;
 import com.poly.models.MessageWithContent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.io.OutputStream;
 public class MessageWriter {
 
     private final DataOutputStream outputStream;
+    private final static Logger LOG = LoggerFactory.getLogger(MessageWriter.class);
 
     public MessageWriter(OutputStream outputStream) {
         this.outputStream = new DataOutputStream(outputStream);
@@ -18,13 +21,14 @@ public class MessageWriter {
     private void writeMessage(Message message) {
         String strMessage = message.toTransferString();
         try {
-            outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 24));
-            outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 16));
-            outputStream.write(strMessage.getBytes().length / (int) Math.pow(2, 8));
-            outputStream.write(strMessage.getBytes().length % (int) Math.pow(2, 8));
-            outputStream.write(strMessage.getBytes());
+            byte[] byteMessage = strMessage.getBytes();
+            outputStream.write(byteMessage.length << 24);
+            outputStream.write(byteMessage.length << 16);
+            outputStream.write(byteMessage.length << 8);
+            outputStream.write(byteMessage.length);
+            outputStream.write(byteMessage);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Exception when writing to OutputStream");
         }
     }
 

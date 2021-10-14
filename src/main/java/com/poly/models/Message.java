@@ -1,12 +1,11 @@
 package com.poly.models;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Message implements Serializable {
+public class Message {
 
     private String date;
     private String name;
@@ -104,19 +103,19 @@ public class Message implements Serializable {
 
     public void parseToMessage(String message) {
         String[] messageParts = message
-                .split(" ,");
+                .split(" , ");
         List<String> messagePartsWithoutGarbage = Arrays.stream(messageParts)
                 .map(it -> it.split(" : ")[1]).collect(Collectors.toList());
 
-        setDate(messagePartsWithoutGarbage.get(0).trim());
-        setName(messagePartsWithoutGarbage.get(1).trim());
+        setDate(messagePartsWithoutGarbage.get(0));
+        setName(messagePartsWithoutGarbage.get(1));
         setText(messagePartsWithoutGarbage.get(2)
                 .replaceAll("\\\\,", ",")
                 .replaceAll("\\\\:", ":")
-                .trim());
-        setFileName(messagePartsWithoutGarbage.get(3).trim().equals("null")
-                ? null : messagePartsWithoutGarbage.get(3).trim());
-        setFileSize(messagePartsWithoutGarbage.get(4).trim().equals("null")
-                ? null : Integer.valueOf(messagePartsWithoutGarbage.get(4).trim()));
+        );
+        setFileName(messagePartsWithoutGarbage.get(3).equals("null")
+                ? null : messagePartsWithoutGarbage.get(3));
+        setFileSize(messagePartsWithoutGarbage.get(4).equals("null")
+                ? null : Integer.valueOf(messagePartsWithoutGarbage.get(4)));
     }
 }
