@@ -69,7 +69,7 @@ public class Message {
         return "Message{" +
                 "date='" + date + '\'' +
                 ", name='" + name + '\'' +
-                ", message='" + text + '\'' +
+                ", text='" + text + '\'' +
                 ", fileName='" + fileName + '\'' +
                 '}';
     }
