@@ -10,9 +10,6 @@ public class PolySerializeTest {
                 "2021-09-23", "Nikita", "", null, null);
         Message messageAfterParse = new Message();
         messageAfterParse.parseToMessage(message.toTransferString());
-        System.out.println(message);
-        System.out.println(message.toTransferString());
-        System.out.println(messageAfterParse);
         Assertions.assertEquals(message, messageAfterParse);
     }
 }
