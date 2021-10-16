@@ -3,6 +3,8 @@ package com.poly.sockets;
 import com.poly.models.Message;
 import com.poly.models.MessageWithContent;
 import org.apache.commons.codec.binary.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -11,6 +13,7 @@ import java.io.InputStream;
 public class MessageReader {
 
     private final DataInputStream inputStream;
+    private final static Logger LOG = LoggerFactory.getLogger(MessageWriter.class);
 
     public MessageReader(InputStream inputStream) {
         this.inputStream = new DataInputStream(inputStream);
@@ -24,17 +27,25 @@ public class MessageReader {
         return file;
     }
 
-    private Message readMessage() throws IOException {
+    public byte[] readByteMessage() throws IOException {
         int size = 0;
         for (int i = 0; i < 4; i++) {
             size = size << 8;
             size += inputStream.read();
         }
-        Message message = new Message();
         byte[] msg = new byte[size];
         for (int i = 0; i < size; i++) {
             msg[i] = (byte) inputStream.read();
         }
+        LOG.info(String.valueOf(msg.length));
+        System.out.println(msg.length);
+        return msg;
+    }
+
+    private Message readMessage() throws IOException {
+        Message message = new Message();
+        byte[] msg = readByteMessage();
+        System.out.println(StringUtils.newStringUtf8(msg));
         message.parseToMessage(StringUtils.newStringUtf8(msg));
         return message;
     }
