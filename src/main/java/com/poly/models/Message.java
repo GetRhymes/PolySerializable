@@ -109,7 +109,6 @@ public class Message {
                     String[] partsOfMessageField = it.split(" : ");
                     return (partsOfMessageField.length > 1) ? partsOfMessageField[1] : "";
                 }).collect(Collectors.toList());
-        System.out.println(messagePartsWithoutGarbage);
         setDate(messagePartsWithoutGarbage.get(0).trim());
         setName(messagePartsWithoutGarbage.get(1).trim());
         setText(messagePartsWithoutGarbage.get(2)

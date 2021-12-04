@@ -22,10 +22,9 @@ public class MessageWriter {
         String strMessage = message.toTransferString();
         try {
             byte[] byteMessage = strMessage.getBytes();
-            LOG.info(String.valueOf(byteMessage.length));
-            outputStream.write(byteMessage.length << 24);
-            outputStream.write(byteMessage.length << 16);
-            outputStream.write(byteMessage.length << 8);
+            outputStream.write(byteMessage.length >> 24);
+            outputStream.write(byteMessage.length >> 16);
+            outputStream.write(byteMessage.length >> 8);
             outputStream.write(byteMessage.length);
             outputStream.write(byteMessage);
         } catch (IOException e) {
@@ -50,4 +49,6 @@ public class MessageWriter {
             writeFile(messageWithContent.getContent());
         }
     }
+
+
 }

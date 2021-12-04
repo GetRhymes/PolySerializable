@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class MessageReader {
 
     private final DataInputStream inputStream;
-    private final static Logger LOG = LoggerFactory.getLogger(MessageWriter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(MessageReader.class);
 
     public MessageReader(InputStream inputStream) {
         this.inputStream = new DataInputStream(inputStream);
@@ -31,21 +31,18 @@ public class MessageReader {
         int size = 0;
         for (int i = 0; i < 4; i++) {
             size = size << 8;
-            size += inputStream.read();
+            size += inputStream.readByte() & 0xff;
         }
         byte[] msg = new byte[size];
         for (int i = 0; i < size; i++) {
-            msg[i] = (byte) inputStream.read();
+            msg[i] = inputStream.readByte();
         }
-        LOG.info(String.valueOf(msg.length));
-        System.out.println(msg.length);
         return msg;
     }
 
     private Message readMessage() throws IOException {
         Message message = new Message();
         byte[] msg = readByteMessage();
-        System.out.println(StringUtils.newStringUtf8(msg));
         message.parseToMessage(StringUtils.newStringUtf8(msg));
         return message;
     }
@@ -59,6 +56,7 @@ public class MessageReader {
     }
 
     public MessageWithContent read() throws IOException {
+
         Message message = readMessage();
         byte[] content = null;
         if(message.getFileSize() != null && message.getFileSize() > 0
